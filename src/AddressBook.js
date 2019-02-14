@@ -14,3 +14,8 @@ AddressBook.prototype.addContact = function (contact) {
 AddressBook.prototype.getContact = function (index) {
     return this.contacts[index];
 }
+
+AddressBook.prototype.deleteContact = function (index) {
+    //Splice meetodi kasutamine, et elementi eemaldada
+    this.contacts.splice(index, 1);
+}
