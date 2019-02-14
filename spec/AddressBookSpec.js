@@ -27,13 +27,19 @@ describe('Address Book', function () {
     });
 });
 
-//Uus suite
+//beforeEach kasutamine, et test saaks läbitud
 describe('Async Address Book', function () {
-    //Uus spec
-    it('should grab initial contacts', function () {
-        let addressBook = new AddressBook();
-//Uue meetodi lisamine, tegemist on asünkroonse funktsiooniga
-        addressBook.getInitialContacts();
+    let addressBook = new AddressBook();
+//Uue funktsiooni nimega "done" rakendamine, mis annab teada, kui asünkroonne
+    //funktsioon on lõpetanud ning on võimalik test käivitada
+    beforeEach(function (done) {
+        addressBook.getInitialContacts(function () {
+            done();
+        });
+    });
+
+    it('should grab initial contacts', function (done) {
         expect(addressBook.initialComplete).toBe(true);
+        done();
     });
 });
