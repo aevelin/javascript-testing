@@ -2,8 +2,19 @@
 function AddressBook() {
     //Uue omaduse lisamine. Tegemist on massiiviga
     this.contacts = [];
+    this.initialComplete = false;
 }
 
+AddressBook.prototype.getInitialContacts = function(cb) {
+    let self = this;
+//Et muuta getInitalContacts funktsioon asünkroonseks
+    setTimeout(function () {
+        self.initialComplete = true;
+        if (cb) {
+            return cb();
+        }
+    }, 3);
+}
 //Uue funktsiooni addContact lisamine, mis aktsepteerib contacti kui parameetrit
 //ning lükkab selle kontakti massiivi
 AddressBook.prototype.addContact = function (contact) {
