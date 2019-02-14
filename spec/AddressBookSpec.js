@@ -10,7 +10,7 @@ describe('Address Book', function () {
 
     it('should be able to add a contact', function () {
 
-    //addContact meetodi lisamine
+        //addContact meetodi lisamine
         addressBook.addContact(thisContact);
 
         //Kontrollimine, et thisContact on lisatud addressBookile
@@ -24,5 +24,16 @@ describe('Address Book', function () {
         addressBook.deleteContact(0);
 
         expect(addressBook.getContact(0)).not.toBeDefined();
+    });
+});
+
+//Uus suite
+describe('Async Address Book', function () {
+    //Uus spec
+    it('should grab initial contacts', function () {
+        let addressBook = new AddressBook();
+//Uue meetodi lisamine, tegemist on asünkroonse funktsiooniga
+        addressBook.getInitialContacts();
+        expect(addressBook.initialComplete).toBe(true);
     });
 });
